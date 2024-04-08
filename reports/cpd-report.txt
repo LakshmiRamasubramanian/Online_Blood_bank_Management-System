@@ -1,0 +1,1878 @@
+Found a 10 line (84 tokens) duplication in the following files: 
+Starting at line 67 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 188 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+		int login = 0;
+		SessionFactory sessionfactory = null;
+		Session session = null;
+		try {
+			sessionfactory = HibernateUtil.getSessionFactory();
+			session = sessionfactory.openSession();
+			List list = session.createQuery("from UsersEntity").list();
+			for (int i = 0; i < list.size(); i++) {
+				UsersEntity usersEntity = (UsersEntity) list.get(i);
+				if (usersPojo.getEmail().equals(usersEntity.getEmail())
+=====================================================================
+Found a 8 line (76 tokens) duplication in the following files: 
+Starting at line 63 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 197 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+
+		int id = 0;
+		try {
+			sessionfactory = HibernateUtil.getSessionFactory();
+			session = sessionfactory.openSession();
+			List list = session.createQuery("from DonorEntity").list();
+			for (int i = 0; i < list.size(); i++) {
+				DonorEntity donorEntity = (DonorEntity) list.get(i);
+				if (donorPojo.getEmail().equals(donorEntity.getEmail())
+=====================================================================
+Found a 14 line (75 tokens) duplication in the following files: 
+Starting at line 301 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 381 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+			} else {
+				mav = new ModelAndView("Home");
+			}
+		} catch (NullPointerException ne) {
+			LOGGER.error(ne.getMessage());
+			mav = new ModelAndView("Home");
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+
+	}
+=====================================================================
+Found a 17 line (72 tokens) duplication in the following files: 
+Starting at line 13 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDao.java
+Starting at line 15 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\service\UsersService.java
+
+public interface UsersDao {
+
+	public int registerUser(UsersPojo usersPojo) throws ApplicationException;
+
+	public int loginUser(UsersPojo usersPojo) throws ApplicationException;
+
+	public List<PostBloodRequirementPojo> displayRequirements() throws ApplicationException, ParseException;
+
+	public List getAllStates() throws ApplicationException;
+
+	public List<BloodGroupPojo> getAllBloodGroups() throws ApplicationException;
+
+	public int mailCheckUser(UsersPojo usersPojo) throws ApplicationException;
+
+	public List<SlotBookingPojo> inboxCheck(String userMailId) throws ParseException, ApplicationException;
+
+}
+=====================================================================
+Found a 15 line (71 tokens) duplication in the following files: 
+Starting at line 55 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 110 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+				mav.addObject("allHospitals", allHospitals);
+				mav.addObject("allStates", allStates);
+				mav.addObject("allBloodGroups", allBloodGroups);
+			} else {
+				mav = new ModelAndView("Home");
+			}
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+	}
+
+	@RequestMapping("/insertBloodRequirement")
+=====================================================================
+Found a 24 line (70 tokens) duplication in the following files: 
+Starting at line 130 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 220 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+                               mav = new ModelAndView("NoRecipient");
+                        }
+                  }
+
+                  else {
+                        mav = new ModelAndView("Home");
+                  }
+
+           } catch (NullPointerException ne) {
+                  LOGGER.error(ne.getMessage());
+                  mav = new ModelAndView("Home");
+           } catch (Exception e) {
+                  LOGGER.error(e.getMessage());
+                  mav = new ModelAndView("Error");
+
+           }
+
+           return mav;
+    }
+
+
+
+
+	@RequestMapping(value = "/donorRequests", method = RequestMethod.POST)
+=====================================================================
+Found a 11 line (67 tokens) duplication in the following files: 
+Starting at line 220 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 299 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+					mav = new ModelAndView("Error");
+				}
+			} else {
+				mav = new ModelAndView("Home");
+			}
+		} catch (NullPointerException ne) {
+			LOGGER.error(ne.getMessage());
+			mav = new ModelAndView("Home");
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+=====================================================================
+Found a 10 line (64 tokens) duplication in the following files: 
+Starting at line 94 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 157 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+					mav = new ModelAndView("Home");
+				}
+			} catch (ApplicationException e) {
+				LOGGER.error(e.getMessage());
+				mav = new ModelAndView("Error");
+				mav.addObject("message", e.getMessage());
+			}
+		} else {
+			List<StatesPojo> allStates = usersService.getAllStates();
+			List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+=====================================================================
+Found a 14 line (61 tokens) duplication in the following files: 
+Starting at line 130 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 299 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+                               mav = new ModelAndView("NoRecipient");
+                        }
+                  }
+
+                  else {
+                        mav = new ModelAndView("Home");
+                  }
+
+           } catch (NullPointerException ne) {
+                  LOGGER.error(ne.getMessage());
+                  mav = new ModelAndView("Home");
+           } catch (Exception e) {
+                  LOGGER.error(e.getMessage());
+                  mav = new ModelAndView("Error");
+=====================================================================
+Found a 12 line (59 tokens) duplication in the following files: 
+Starting at line 132 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 222 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 381 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+                  }
+
+                  else {
+                        mav = new ModelAndView("Home");
+                  }
+
+           } catch (NullPointerException ne) {
+                  LOGGER.error(ne.getMessage());
+                  mav = new ModelAndView("Home");
+           } catch (Exception e) {
+                  LOGGER.error(e.getMessage());
+                  mav = new ModelAndView("Error");
+=====================================================================
+Found a 10 line (55 tokens) duplication in the following files: 
+Starting at line 93 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 212 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+		List<PostBloodRequirementPojo> displayList = null;
+		SessionFactory sessionFactory = null;
+		Session session = null;
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		Date dd = new Date();
+
+		Date todayDate = formatter.parse(formatter.format(dd));
+		try {
+			sessionFactory = HibernateUtil.getSessionFactory();
+			session = sessionFactory.openSession();
+=====================================================================
+Found a 8 line (54 tokens) duplication in the following files: 
+Starting at line 51 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 223 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+			map.addAttribute("registerUsers", new UsersPojo());
+			mav.addObject("allStates", allStates);// add all the states in allstates variable using addObject method
+			mav.addObject("allBloodGroups", allBloodGroups);
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+=====================================================================
+Found a 16 line (53 tokens) duplication in the following files: 
+Starting at line 157 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 84 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+	                                  mav.addObject("allBloodGroups", allBloodGroups);
+	                 }
+	            }
+	                     else 
+	                     {
+	                           mav = new ModelAndView("Home");
+	                     }
+	       }
+	          catch (Exception e) 
+	              {
+	                 LOGGER.error(e.getMessage());
+	                     mav = new ModelAndView("Error");
+	                     mav.addObject("message",e.getMessage());
+	              }
+	              return mav;
+	     }
+=====================================================================
+Found a 20 line (49 tokens) duplication in the following files: 
+Starting at line 91 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 30 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\RecipientPojo.java
+
+	}
+
+	
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public int getPinCode() {
+		return pinCode;
+	}
+
+	public void setPinCode(int pinCode) {
+		this.pinCode = pinCode;
+	}
+
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public void setBloodGroup(String bloodGroup) {
+=====================================================================
+Found a 8 line (48 tokens) duplication in the following files: 
+Starting at line 58 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 93 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 113 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+			} else {
+				mav = new ModelAndView("Home");
+			}
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+=====================================================================
+Found a 19 line (48 tokens) duplication in the following files: 
+Starting at line 81 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+Starting at line 142 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\UsersEntity.java
+
+	}
+
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public int getPinCode() {
+		return pinCode;
+	}
+
+	public void setPinCode(int pinCode) {
+		this.pinCode = pinCode;
+	}
+
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+
+}
+=====================================================================
+Found a 11 line (47 tokens) duplication in the following files: 
+Starting at line 88 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 263 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+				mav = new ModelAndView("Home");
+			}
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+	}
+
+	@RequestMapping(value = "/searchDonor", method = RequestMethod.GET)
+=====================================================================
+Found a 17 line (47 tokens) duplication in the following files: 
+Starting at line 82 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 106 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	}
+
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+=====================================================================
+Found a 11 line (46 tokens) duplication in the following files: 
+Starting at line 349 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 53 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+			map.addAttribute("donor", new DonorPojo());
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/donorLogout", method = RequestMethod.GET)
+=====================================================================
+Found a 9 line (45 tokens) duplication in the following files: 
+Starting at line 271 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 157 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 84 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+					mav.addObject("slotBookingPojo", slotBookingPojo);
+				}
+			} else {
+				mav = new ModelAndView("Home");
+			}
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.toString());
+=====================================================================
+Found a 10 line (45 tokens) duplication in the following files: 
+Starting at line 350 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/donorLogout", method = RequestMethod.GET)
+=====================================================================
+Found a 7 line (45 tokens) duplication in the following files: 
+Starting at line 322 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 115 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+                  requirementList.setDate(requirementEntity.getDate());
+                  requirementList.setContactNumber(requirementEntity.getContactNumber());
+
+                  requirementList.setState(requirementEntity.getState());
+                  requirementList.setPinCode(requirementEntity.getPinCode());
+                  requirementList.setHospitalName(requirementEntity.getHospitalName());
+                  requirementList.setUserMailID(requirementEntity.getUserMailID());
+=====================================================================
+Found a 9 line (45 tokens) duplication in the following files: 
+Starting at line 27 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 27 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+
+	@Column(name = "state")
+	private String state;
+	@Column(name = "area")
+	private String area;
+	@Column(name = "pin_code")
+	private int pinCode;
+	@Column(name = "blood_group")
+	private String bloodGroup;
+	@Column(name = "hospital_name")
+=====================================================================
+Found a 6 line (44 tokens) duplication in the following files: 
+Starting at line 341 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 43 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+	public ModelAndView donorRegister(ModelMap map, HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = null;
+		try {
+			List<StatesPojo> allStates = usersService.getAllStates();
+			List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+			mav = new ModelAndView("Donor");
+=====================================================================
+Found a 7 line (44 tokens) duplication in the following files: 
+Starting at line 257 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 284 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+
+                  if (donorBloodGroup.equals("A +ve")) {
+
+                        List list = session.createQuery("from BloodRequirementEntity where blood_group like 'AB +ve'").list();
+                        displayList = new ArrayList();
+                        detailsList = new ArrayList();
+                        detailsList = forLoop(list, displayList);
+                  } else if (donorBloodGroup.equals("A -ve")) {
+=====================================================================
+Found a 10 line (43 tokens) duplication in the following files: 
+Starting at line 307 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 90 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 265 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+
+	}
+
+	@RequestMapping("/feedbackFetch")
+=====================================================================
+Found a 10 line (43 tokens) duplication in the following files: 
+Starting at line 350 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 61 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/donorLogout", method = RequestMethod.GET)
+=====================================================================
+Found a 11 line (42 tokens) duplication in the following files: 
+Starting at line 162 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 263 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+	                           mav = new ModelAndView("Home");
+	                     }
+	       }
+	          catch (Exception e) 
+	              {
+	                 LOGGER.error(e.getMessage());
+	                     mav = new ModelAndView("Error");
+	                     mav.addObject("message",e.getMessage());
+	              }
+	              return mav;
+	     }
+=====================================================================
+Found a 5 line (42 tokens) duplication in the following files: 
+Starting at line 318 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 112 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+                  requirementList.setRequisterName(requirementEntity.getRequisterName());
+                  requirementList.setArea(requirementEntity.getArea());
+                  requirementList.setId(requirementEntity.getId());
+                  requirementList.setBloodGroup(requirementEntity.getBloodGroup());
+                  requirementList.setDate(requirementEntity.getDate());
+=====================================================================
+Found a 10 line (41 tokens) duplication in the following files: 
+Starting at line 350 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 90 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 265 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/donorLogout", method = RequestMethod.GET)
+=====================================================================
+Found a 9 line (41 tokens) duplication in the following files: 
+Starting at line 387 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 164 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+	}
+
+}
+=====================================================================
+Found a 5 line (41 tokens) duplication in the following files: 
+Starting at line 49 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 101 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+
+			if (session.getAttribute("username") != null) {
+				List<StatesPojo> allStates = usersService.getAllStates();
+				List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+				List<HospitalPojo> allHospitals = recipientService.getAllHospitals();
+				mav = new ModelAndView("PostBloodRequirement");
+=====================================================================
+Found a 8 line (41 tokens) duplication in the following files: 
+Starting at line 15 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\DonorPojo.java
+Starting at line 17 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+
+	@Range(min = 1000000000, message = "Contact number must be 10 digits")
+	private long contactNumber;
+	private String state;
+	private String area;
+
+	@Range(min = 100000, max = 999999, message = "Pincode must be 6 digits")
+	private int pinCode;
+	private String bloodGroup;
+=====================================================================
+Found a 8 line (40 tokens) duplication in the following files: 
+Starting at line 307 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 164 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+
+	}
+=====================================================================
+Found a 7 line (40 tokens) duplication in the following files: 
+Starting at line 387 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 90 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 265 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+	}
+=====================================================================
+Found a 6 line (40 tokens) duplication in the following files: 
+Starting at line 96 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 159 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 226 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+			} catch (ApplicationException e) {
+				LOGGER.error(e.getMessage());
+				mav = new ModelAndView("Error");
+				mav.addObject("message", e.getMessage());
+			}
+		} else {
+=====================================================================
+Found a 9 line (40 tokens) duplication in the following files: 
+Starting at line 27 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDao.java
+Starting at line 28 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\service\DonorService.java
+
+	public List feedbackFetch(FeedbackPojo feedbackPojo) throws ApplicationException;
+
+	public int mailCheckDonor(DonorPojo donorPojo) throws ApplicationException;
+
+	public int dateCheck(String requiredDate,String bookingDate) throws ParseException;
+	
+	 public List<PostBloodRequirementPojo> displayBloodCompatibility(String donorBloodGroup)
+             throws ApplicationException;
+}
+=====================================================================
+Found a 11 line (40 tokens) duplication in the following files: 
+Starting at line 17 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 14 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+
+public class BloodRequirementEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // this is Used to Auto Increment the Value.
+	private int id;
+	@Column(name = "requister_name")
+	private String requisterName;
+
+	@Column(name = "contact_number")
+	private long contactNumber;
+
+	@Column(name = "state")
+=====================================================================
+Found a 8 line (40 tokens) duplication in the following files: 
+Starting at line 27 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 27 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 44 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\UsersEntity.java
+
+	@Column(name = "state")
+	private String state;
+	@Column(name = "area")
+	private String area;
+	@Column(name = "pin_code")
+	private int pinCode;
+	@Column(name = "blood_group")
+	private String bloodGroup;
+=====================================================================
+Found a 8 line (40 tokens) duplication in the following files: 
+Starting at line 29 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 24 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+
+	@Column(name = "area")
+	private String area;
+	@Column(name = "pin_code")
+	private int pinCode;
+	@Column(name = "blood_group")
+	private String bloodGroup;
+	@Column(name = "hospital_name")
+	private String hospitalName;
+=====================================================================
+Found a 15 line (40 tokens) duplication in the following files: 
+Starting at line 46 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 36 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	}
+
+	public void setRecipientName(String recipientName) {
+		this.recipientName = recipientName;
+	}
+
+	public String getDonorName() {
+		return donorName;
+	}
+
+	public void setDonorName(String donorName) {
+		this.donorName = donorName;
+	}
+
+	public String getUserMailID() {
+=====================================================================
+Found a 10 line (39 tokens) duplication in the following files: 
+Starting at line 307 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 350 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 61 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 90 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 265 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+		return mav;
+
+	}
+
+	@RequestMapping("/feedbackFetch")
+=====================================================================
+Found a 7 line (39 tokens) duplication in the following files: 
+Starting at line 59 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 114 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 157 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+				mav = new ModelAndView("Home");
+			}
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+=====================================================================
+Found a 12 line (39 tokens) duplication in the following files: 
+Starting at line 49 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 129 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 55 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+			session.save(donorEntity);
+			transaction.commit();
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return 1;
+	}
+
+	@Override // Authentication of donor login
+	public int donorLogin(DonorPojo donorPojo) throws ApplicationException {
+=====================================================================
+Found a 7 line (39 tokens) duplication in the following files: 
+Starting at line 27 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 83 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+	public int insertBloodRequirement(PostBloodRequirementPojo requisterPojo) throws ApplicationException {
+		SessionFactory sessionfactory = null;
+		Session session = null;
+		try {
+			sessionfactory = HibernateUtil.getSessionFactory();
+			session = sessionfactory.openSession();
+			Transaction transaction = session.beginTransaction();
+=====================================================================
+Found a 6 line (38 tokens) duplication in the following files: 
+Starting at line 349 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 225 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+			map.addAttribute("donor", new DonorPojo());
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+=====================================================================
+Found a 12 line (38 tokens) duplication in the following files: 
+Starting at line 49 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 129 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 44 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 55 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+			session.save(donorEntity);
+			transaction.commit();
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return 1;
+	}
+
+	@Override // Authentication of donor login
+	public int donorLogin(DonorPojo donorPojo) throws ApplicationException {
+=====================================================================
+Found a 5 line (37 tokens) duplication in the following files: 
+Starting at line 350 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 96 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 159 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+=====================================================================
+Found a 5 line (37 tokens) duplication in the following files: 
+Starting at line 61 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 226 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+=====================================================================
+Found a 8 line (36 tokens) duplication in the following files: 
+Starting at line 350 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 387 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 61 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 165 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+
+		return mav;
+	}
+=====================================================================
+Found a 4 line (36 tokens) duplication in the following files: 
+Starting at line 48 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 104 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		try {
+			if (session.getAttribute("username") != null) {
+				List<StatesPojo> allStates = usersService.getAllStates();
+				List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+=====================================================================
+Found a 8 line (36 tokens) duplication in the following files: 
+Starting at line 30 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 27 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 83 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 33 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+	public int registerDonor(DonorPojo donorPojo) throws ApplicationException {
+		SessionFactory sessionfactory = null;
+		Session session = null;
+		try {
+			// Here we Get Values from the Pojo and Set in entity fields.
+			sessionfactory = HibernateUtil.getSessionFactory();
+			session = sessionfactory.openSession();
+			Transaction transaction = session.beginTransaction();
+=====================================================================
+Found a 5 line (36 tokens) duplication in the following files: 
+Starting at line 313 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 105 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+           for (int i = 0; i < list.size(); i++) // In this loop we get the values from Entity table and set the values in
+                                                                               // Pojo class.
+           {
+                  PostBloodRequirementPojo requirementList = new PostBloodRequirementPojo();
+                  BloodRequirementEntity requirementEntity = (BloodRequirementEntity) list.get(i);
+=====================================================================
+Found a 7 line (36 tokens) duplication in the following files: 
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 146 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+        String recipientArea = recipientPojo.getArea();
+
+        details = new ArrayList<DonorPojo>();
+        detailsList = new ArrayList<DonorPojo>();
+        try {
+               sessionfactory = HibernateUtil.getSessionFactory();
+               session = sessionfactory.openSession();
+=====================================================================
+Found a 9 line (35 tokens) duplication in the following files: 
+Starting at line 49 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 129 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 44 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 98 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 55 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+			session.save(donorEntity);
+			transaction.commit();
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return 1;
+	}
+=====================================================================
+Found a 7 line (35 tokens) duplication in the following files: 
+Starting at line 29 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 24 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+
+	@Column(name = "area")
+	private String area;
+	@Column(name = "pin_code")
+	private int pinCode;
+	@Column(name = "blood_group")
+	private String bloodGroup;
+	@Column(name = "password")
+=====================================================================
+Found a 5 line (34 tokens) duplication in the following files: 
+Starting at line 186 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 343 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+		} else {
+			List<StatesPojo> allStates = usersService.getAllStates();// Fetching the States Values from the Database.
+			List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+			mav = new ModelAndView("Donor");
+			mav.addObject("donorPojo", donorPojo);// setting PojoObject through the method add Object.
+=====================================================================
+Found a 6 line (34 tokens) duplication in the following files: 
+Starting at line 274 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 263 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+				mav = new ModelAndView("Home");
+			}
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.toString());
+=====================================================================
+Found a 5 line (34 tokens) duplication in the following files: 
+Starting at line 151 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 107 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+	                {
+	                    List<StatesPojo> allStates = usersService.getAllStates();
+	                                  List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+	                           mav = new ModelAndView("SearchDonor");
+	                    mav.addObject("donornotfound", "No donor found.Click here to post your requirement");
+=====================================================================
+Found a 9 line (34 tokens) duplication in the following files: 
+Starting at line 237 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 304 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+
+           } catch (Exception e) {
+                  throw new ApplicationException(e.getMessage());
+           } finally {
+                  session.close();
+           }
+           return detailsList; // This Returns the List as a Object
+    }
+
+    public List<PostBloodRequirementPojo> displayBloodCompatibility(String donorBloodGroup)
+=====================================================================
+Found a 4 line (34 tokens) duplication in the following files: 
+Starting at line 157 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 165 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+               } else if (recipientBloodGroup.equals("A -ve")) {
+                     List list = session.createQuery("from DonorEntity where blood_group like 'O -ve'").list();
+                     detailsList = searchForLoop(list, details, recipientArea);
+               } else if (recipientBloodGroup.equals("B +ve")) {
+=====================================================================
+Found a 5 line (33 tokens) duplication in the following files: 
+Starting at line 307 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 387 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 96 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 165 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 90 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 159 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 226 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 265 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.getMessage());
+		}
+=====================================================================
+Found a 8 line (33 tokens) duplication in the following files: 
+Starting at line 49 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 108 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 129 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 44 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 98 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 55 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+			session.save(donorEntity);
+			transaction.commit();
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return 1;
+=====================================================================
+Found a 5 line (33 tokens) duplication in the following files: 
+Starting at line 259 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 265 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 271 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 277 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 285 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 291 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+
+                        List list = session.createQuery("from BloodRequirementEntity where blood_group like 'AB +ve'").list();
+                        displayList = new ArrayList();
+                        detailsList = new ArrayList();
+                        detailsList = forLoop(list, displayList);
+                  } else if (donorBloodGroup.equals("A -ve")) {
+=====================================================================
+Found a 11 line (33 tokens) duplication in the following files: 
+Starting at line 302 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 180 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+                        detailsList = forLoop(list, displayList);
+                  }
+           } catch (Exception e) {
+                  throw new ApplicationException(e.getMessage());
+           } finally {
+                  session.close();
+           }
+           return detailsList; // This Returns the List as a Object
+    }
+
+public List<PostBloodRequirementPojo> forLoop(List list, List displayList) {
+=====================================================================
+Found a 7 line (33 tokens) duplication in the following files: 
+Starting at line 58 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 134 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 159 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+		List<HospitalPojo> hospitalList = null;
+		SessionFactory sessionFactory = null;
+		Session session = null;
+		try {
+			sessionFactory = HibernateUtil.getSessionFactory();
+			session = sessionFactory.openSession();
+			List list = session.createQuery("from HospitalEntity").list();
+=====================================================================
+Found a 7 line (32 tokens) duplication in the following files: 
+Starting at line 171 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 184 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 145 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 145 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 162 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+						mav.addObject("d_msg", "Fill the missed fields");
+					}
+				} else {
+					List<StatesPojo> allStates = usersService.getAllStates();// Fetching the States Values from the
+																				// Database.
+					List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+					mav = new ModelAndView("DonorRegisterWithNewMailId");
+=====================================================================
+Found a 4 line (32 tokens) duplication in the following files: 
+Starting at line 276 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 307 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 387 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.toString());
+=====================================================================
+Found a 10 line (32 tokens) duplication in the following files: 
+Starting at line 121 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 243 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+				displayList.add(requirementList);
+				}
+			}
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return displayList;
+	}
+=====================================================================
+Found a 5 line (31 tokens) duplication in the following files: 
+Starting at line 109 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 222 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+				List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+				mav = new ModelAndView("SearchDonor");
+				mav.addObject("allStates", allStates);
+				mav.addObject("allBloodGroups", allBloodGroups);
+			} else {
+=====================================================================
+Found a 10 line (31 tokens) duplication in the following files: 
+Starting at line 205 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 78 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+					mailCheck = 1;
+				}
+			}
+
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return mailCheck;
+=====================================================================
+Found a 9 line (31 tokens) duplication in the following files: 
+Starting at line 237 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 182 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+           } catch (Exception e) {
+                  throw new ApplicationException(e.getMessage());
+           } finally {
+                  session.close();
+           }
+           return detailsList; // This Returns the List as a Object
+    }
+
+    public List<PostBloodRequirementPojo> displayBloodCompatibility(String donorBloodGroup)
+=====================================================================
+Found a 8 line (31 tokens) duplication in the following files: 
+Starting at line 80 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 13 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\FeedbackPojo.java
+
+	}
+    public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+    public void setId(int id) {
+		this.id = id;
+	}
+    public void setRequisterName(String requisterName) {
+=====================================================================
+Found a 8 line (31 tokens) duplication in the following files: 
+Starting at line 92 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 62 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+
+	}
+    public void setState(String state) {
+		this.state = state;
+	}
+    public void setArea(String area) {
+		this.area = area;
+	}
+    public void setPinCode(int pinCode) {
+=====================================================================
+Found a 5 line (30 tokens) duplication in the following files: 
+Starting at line 45 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 165 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		try {
+
+			List<StatesPojo> allStates = usersService.getAllStates();
+			List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+			mav = new ModelAndView("Register");
+=====================================================================
+Found a 9 line (30 tokens) duplication in the following files: 
+Starting at line 78 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 121 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 243 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+					id = donorEntity.getId();
+				}
+			}
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return id;
+=====================================================================
+Found a 8 line (30 tokens) duplication in the following files: 
+Starting at line 236 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 128 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+                  System.out.println("out dao" + displayList);
+           } catch (Exception e) {
+                  throw new ApplicationException(e.getMessage());
+           } finally {
+                  session.close();
+           }
+           return detailsList; // This Returns the List as a Object
+    }
+=====================================================================
+Found a 8 line (30 tokens) duplication in the following files: 
+Starting at line 92 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 87 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 62 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+
+	}
+    public void setState(String state) {
+		this.state = state;
+	}
+    public void setArea(String area) {
+		this.area = area;
+	}
+    public void setPinCode(int pinCode) {
+=====================================================================
+Found a 9 line (30 tokens) duplication in the following files: 
+Starting at line 98 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 89 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+Starting at line 150 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\UsersEntity.java
+
+	}
+    public void setPinCode(int pinCode) {
+		this.pinCode = pinCode;
+	}
+    public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+
+}
+=====================================================================
+Found a 6 line (30 tokens) duplication in the following files: 
+Starting at line 24 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+Starting at line 47 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\UsersEntity.java
+
+	@Column(name = "area")
+	private String area;
+	@Column(name = "pin_code")
+	private int pinCode;
+	@Column(name = "blood_group")
+	private String bloodGroup;
+=====================================================================
+Found a 2 line (29 tokens) duplication in the following files: 
+Starting at line 68 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 202 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 191 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+			for (int i = 0; i < list.size(); i++) {
+				DonorEntity donorEntity = (DonorEntity) list.get(i);
+=====================================================================
+Found a 8 line (29 tokens) duplication in the following files: 
+Starting at line 79 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 206 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 79 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 122 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 199 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 244 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+				}
+			}
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return id;
+=====================================================================
+Found a 6 line (29 tokens) duplication in the following files: 
+Starting at line 218 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 245 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+
+    public List<PostBloodRequirementPojo> displayRequirements(String donorBloodGroup) throws ApplicationException {
+
+           List<PostBloodRequirementPojo> displayList = null;
+           List<PostBloodRequirementPojo> detailsList = null;
+           SessionFactory sessionFactory = null;
+           Session session = null;
+=====================================================================
+Found a 8 line (29 tokens) duplication in the following files: 
+Starting at line 302 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 70 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 180 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 147 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 172 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+                        detailsList = forLoop(list, displayList);
+                  }
+           } catch (Exception e) {
+                  throw new ApplicationException(e.getMessage());
+           } finally {
+                  session.close();
+           }
+           return detailsList; // This Returns the List as a Object
+=====================================================================
+Found a 7 line (29 tokens) duplication in the following files: 
+Starting at line 304 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 129 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 182 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+           } catch (Exception e) {
+                  throw new ApplicationException(e.getMessage());
+           } finally {
+                  session.close();
+           }
+           return detailsList; // This Returns the List as a Object
+    }
+=====================================================================
+Found a 5 line (29 tokens) duplication in the following files: 
+Starting at line 109 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 140 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+    public List donorCheck(RecipientPojo recipientPojo) throws ApplicationException {
+        SessionFactory sessionfactory = null;
+        Session session = null;
+        List<DonorPojo> details = null;
+        List<DonorPojo> detailsList = null;
+=====================================================================
+Found a 11 line (29 tokens) duplication in the following files: 
+Starting at line 62 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 57 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+
+	}
+	public long getContactNumber() {
+		return contactNumber;
+	}
+	public String getState() {
+		return state;
+	}
+	public String getArea() {
+		return area;
+	}
+	public int getPinCode() {
+=====================================================================
+Found a 9 line (29 tokens) duplication in the following files: 
+Starting at line 14 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\BloodGroupPojo.java
+Starting at line 88 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\UsersPojo.java
+
+	}
+
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+=====================================================================
+Found a 9 line (29 tokens) duplication in the following files: 
+Starting at line 12 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\HospitalPojo.java
+Starting at line 32 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+	public int getId() {
+=====================================================================
+Found a 5 line (28 tokens) duplication in the following files: 
+Starting at line 173 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 186 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 343 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 151 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 45 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 107 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 151 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 165 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+				} else {
+					List<StatesPojo> allStates = usersService.getAllStates();// Fetching the States Values from the
+																				// Database.
+					List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+					mav = new ModelAndView("DonorRegisterWithNewMailId");
+=====================================================================
+Found a 5 line (28 tokens) duplication in the following files: 
+Starting at line 182 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 218 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+			} catch (ApplicationException e) {
+				LOGGER.error(e.getMessage());
+				mav = new ModelAndView("Error");
+			}
+		} else {
+=====================================================================
+Found a 4 line (28 tokens) duplication in the following files: 
+Starting at line 276 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 350 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 61 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 96 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 159 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 226 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+			mav.addObject("message", e.toString());
+=====================================================================
+Found a 5 line (28 tokens) duplication in the following files: 
+Starting at line 324 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 134 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+
+		mav = new ModelAndView("FeedbackDetails");
+		if (!details.isEmpty()) {
+			mav.addObject("details", details);
+		} else {
+			mav.addObject("message", "No feedback");
+=====================================================================
+Found a 7 line (28 tokens) duplication in the following files: 
+Starting at line 50 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 109 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 130 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 236 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 45 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 99 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 128 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 56 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+			transaction.commit();
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return 1;
+=====================================================================
+Found a 7 line (28 tokens) duplication in the following files: 
+Starting at line 80 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 207 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 303 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 71 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 181 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 81 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 123 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 148 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 174 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 200 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 245 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+			}
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return id;
+=====================================================================
+Found a 10 line (28 tokens) duplication in the following files: 
+Starting at line 68 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodRequirementEntity.java
+Starting at line 98 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+
+	}
+	public String getArea() {
+		return area;
+	}
+	public int getPinCode() {
+		return pinCode;
+	}
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+=====================================================================
+Found a 4 line (28 tokens) duplication in the following files: 
+Starting at line 10 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\DonorPojo.java
+Starting at line 10 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+Starting at line 14 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\UsersPojo.java
+
+public class DonorPojo {
+	private int id;
+	@Pattern(regexp = "^[ A-Za-z]+$", message = "Name should not contain numbers")
+	@Size(min = 3, max = 50, message = "First Name should not exceed 50 characters")
+=====================================================================
+Found a 6 line (27 tokens) duplication in the following files: 
+Starting at line 171 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 184 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 99 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 145 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 145 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+						mav.addObject("d_msg", "Fill the missed fields");
+					}
+				} else {
+					List<StatesPojo> allStates = usersService.getAllStates();// Fetching the States Values from the
+																				// Database.
+					List<BloodGroupPojo> allBloodGroups = usersService.getAllBloodGroups();
+=====================================================================
+Found a 6 line (27 tokens) duplication in the following files: 
+Starting at line 51 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 81 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 110 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 132 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 209 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 237 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 304 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 47 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 73 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 101 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 129 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 182 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 57 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 82 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 124 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 149 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 176 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 201 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+Starting at line 246 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\UsersDaoImpl.java
+
+		} catch (Exception e) {
+			throw new ApplicationException(e.getMessage());
+		} finally {
+			session.close();
+		}
+		return 1;
+=====================================================================
+Found a 4 line (27 tokens) duplication in the following files: 
+Starting at line 157 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 165 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+Starting at line 178 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\RecipientDaoImpl.java
+
+               } else if (recipientBloodGroup.equals("A -ve")) {
+                     List list = session.createQuery("from DonorEntity where blood_group like 'O -ve'").list();
+                     detailsList = searchForLoop(list, details, recipientArea);
+               } else if (recipientBloodGroup.equals("B +ve")) {
+=====================================================================
+Found a 10 line (27 tokens) duplication in the following files: 
+Starting at line 45 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\junit\DonorTestJunit.java
+Starting at line 65 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\junit\DonorTestJunit.java
+
+		donorPojo.setEmail("kural@gmail.com");
+		donorPojo.setPassword("kurall");
+		int login = donorService.donorLogin(donorPojo);
+		assertEquals(0, login);
+
+	}
+
+	@Test
+	// incorrect username and correct password
+	public void testDonorLogin3() throws ApplicationException {
+=====================================================================
+Found a 10 line (27 tokens) duplication in the following files: 
+Starting at line 41 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\junit\UsersTestJunit.java
+Starting at line 61 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\junit\UsersTestJunit.java
+
+		usersPojo.setEmail("sam@gmail.com");
+		usersPojo.setPassword("samm");
+		int login = usersService.loginUser(usersPojo);
+		assertEquals(0, login);
+
+	}
+
+	@Test
+	// incorrect username and correct password
+	public void testUsersLogin3() throws ApplicationException {
+=====================================================================
+Found a 6 line (27 tokens) duplication in the following files: 
+Starting at line 17 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\DonorPojo.java
+Starting at line 20 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+Starting at line 42 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\UsersPojo.java
+
+	private String state;
+	private String area;
+
+	@Range(min = 100000, max = 999999, message = "Pincode must be 6 digits")
+	private int pinCode;
+	private String bloodGroup;
+=====================================================================
+Found a 5 line (26 tokens) duplication in the following files: 
+Starting at line 68 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 181 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+			}
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+		}
+=====================================================================
+Found a 5 line (26 tokens) duplication in the following files: 
+Starting at line 177 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 189 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+					mav = new ModelAndView("DonorRegisterWithNewMailId");
+					mav.addObject("donorPojo", donorPojo);// setting PojoObject through the method add Object.
+					mav.addObject("allStates", allStates);
+					mav.addObject("allBloodGroups", allBloodGroups);
+				}
+=====================================================================
+Found a 5 line (26 tokens) duplication in the following files: 
+Starting at line 180 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 59 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 94 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 114 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 157 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+					mav.addObject("allBloodGroups", allBloodGroups);
+				}
+			} catch (ApplicationException e) {
+				LOGGER.error(e.getMessage());
+				mav = new ModelAndView("Error");
+=====================================================================
+Found a 9 line (26 tokens) duplication in the following files: 
+Starting at line 190 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 106 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 168 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+			mav.addObject("donorPojo", donorPojo);// setting PojoObject through the method add Object.
+			mav.addObject("allStates", allStates);
+			mav.addObject("allBloodGroups", allBloodGroups);
+		}
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/slotBooking", method = RequestMethod.GET)
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 297 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 89 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+
+					mav = new ModelAndView("FeedbackSubmission");
+				} else {
+					mav = new ModelAndView("Error");
+				}
+			} else {
+				mav = new ModelAndView("Home");
+			}
+		} catch (NullPointerException ne) {
+=====================================================================
+Found a 5 line (26 tokens) duplication in the following files: 
+Starting at line 54 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 105 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+
+				map.addAttribute("requisterPojo", new PostBloodRequirementPojo());
+				mav.addObject("allHospitals", allHospitals);
+				mav.addObject("allStates", allStates);
+				mav.addObject("allBloodGroups", allBloodGroups);
+			} else {
+=====================================================================
+Found a 5 line (26 tokens) duplication in the following files: 
+Starting at line 259 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 265 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 271 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 277 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 285 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 291 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+Starting at line 298 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDaoImpl.java
+
+                        List list = session.createQuery("from BloodRequirementEntity where blood_group like 'AB +ve'").list();
+                        displayList = new ArrayList();
+                        detailsList = new ArrayList();
+                        detailsList = forLoop(list, displayList);
+                  } else if (donorBloodGroup.equals("A -ve")) {
+=====================================================================
+Found a 11 line (26 tokens) duplication in the following files: 
+Starting at line 42 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\FeedbackEntity.java
+Starting at line 82 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 106 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	}
+
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+	public String getCity() {
+=====================================================================
+Found a 4 line (25 tokens) duplication in the following files: 
+Starting at line 68 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 60 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 95 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 115 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 158 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+			}
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+=====================================================================
+Found a 4 line (25 tokens) duplication in the following files: 
+Starting at line 69 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 218 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+
+		} catch (ApplicationException e) {
+			LOGGER.error(e.getMessage());
+			mav = new ModelAndView("Error");
+		}
+=====================================================================
+Found a 4 line (25 tokens) duplication in the following files: 
+Starting at line 217 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 349 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\DonorController.java
+Starting at line 53 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+Starting at line 225 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+					mav.addObject("slotBookingPojo", slotBookingPojo);
+				} catch (ApplicationException e) {
+					LOGGER.error(e.getMessage());
+					mav = new ModelAndView("Error");
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 116 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\RecipientController.java
+Starting at line 70 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\controller\UsersController.java
+
+	                     BindingResult result, HttpServletRequest request, HttpServletResponse response) 
+	     {
+	              ModelAndView mav = new ModelAndView();
+	              
+	              HttpSession session = request.getSession(false);
+	              List<DonorPojo> details = new ArrayList<DonorPojo>();
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 19 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\dao\DonorDao.java
+Starting at line 18 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\service\DonorService.java
+
+	public int donorLogin(DonorPojo donorPojo) throws ApplicationException;
+
+	public int confirmSlot(SlotBookingPojo slotBookingPojo) throws ApplicationException;
+
+	public int deleteRequirement(int recipientId) throws ApplicationException;
+
+	public int feedbackEntry(FeedbackPojo feedbackPojo) throws ApplicationException;
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 20 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodGroupEntity.java
+Starting at line 28 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\FeedbackEntity.java
+Starting at line 19 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\HospitalEntity.java
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getBloodGroup() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 26 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\BloodGroupEntity.java
+Starting at line 104 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+
+	}
+
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+
+}
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 75 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 65 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+
+	}
+	public String getArea() {
+		return area;
+	}
+
+
+	public void setContactNumber(long contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getState() {
+=====================================================================
+Found a 12 line (25 tokens) duplication in the following files: 
+Starting at line 78 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 16 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\RecipientPojo.java
+
+	}
+
+
+	public void setContactNumber(long contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+=====================================================================
+Found a 12 line (25 tokens) duplication in the following files: 
+Starting at line 83 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 130 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\UsersEntity.java
+
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	
+	public void setArea(String area) {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 96 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\DonorEntity.java
+Starting at line 85 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+Starting at line 146 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\UsersEntity.java
+Starting at line 34 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\RecipientPojo.java
+
+	}
+
+	public int getPinCode() {
+		return pinCode;
+	}
+
+	public void setPinCode(int pinCode) {
+		this.pinCode = pinCode;
+	}
+
+	public String getBloodGroup() {
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 44 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\FeedbackEntity.java
+Starting at line 35 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+Starting at line 84 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 108 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+	public String getCity() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 77 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\RecipientDetailsEntity.java
+Starting at line 67 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\DonorPojo.java
+
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public int getPinCode() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 58 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 51 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	}
+
+	public String getUserMailID() {
+		return userMailID;
+	}
+
+	public void setUserMailID(String userMailID) {
+		this.userMailID = userMailID;
+	}
+
+	public int getRecipientId() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 66 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 98 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	}
+
+	public int getRecipientId() {
+		return recipientId;
+	}
+
+	public void setRecipientId(int recipientId) {
+		this.recipientId = recipientId;
+	}
+
+	public int getDonorId() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 74 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 90 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	}
+
+	public int getDonorId() {
+		return donorId;
+	}
+
+	public void setDonorId(int donorId) {
+		this.donorId = donorId;
+	}
+
+	public String getHospitalName() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 90 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 24 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\RecipientPojo.java
+
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getDate() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 98 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\entity\SlotBookingEntity.java
+Starting at line 42 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\PostBloodRequirementPojo.java
+Starting at line 82 of C:\Users\761131\Project\Online-Blood-Bank-Management-System\src\com\obbs\model\SlotBookingPojo.java
+
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTimeSlot() {
